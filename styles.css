@@ -1,10 +1,11 @@
 * {
     margin: 0;
     padding: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    
     background-color: #f4f4f4;
     margin: 0;
     background: rgb(54, 227, 250);
@@ -17,12 +18,14 @@ nav {
     position: fixed;
     top: 0;
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     color: white;
+    font-family:Arial, Helvetica, sans-serif;
     text-shadow: 5px 4px 10px rgba(0,0,0,0.52);
-    height: 15vh;
+    height: 16vh;
     width: 100%;
     background: rgb(26, 152, 161);
+    z-index: 5;
 }
 nav h1{
     color: white;
@@ -45,26 +48,56 @@ nav h1{
     transition: .4s;
 }
 .container h1{
-    margin-bottom:  20px;
+    margin-bottom:  30px;
     color: rgb(26, 152, 161);
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
 }
 
 #encodeSection textarea{
-    width: 95%;
-    height: 20vh;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 20px;
+    width: 90%;
+    height: 18vh;
+    color: black;
 }
 #encodeSection{
     display: none;
+    color: rgb(26, 152, 161);
 }
-
+#encodeSection h2{
+    margin-bottom: 20px;
+}
+#encodeSection #imageInput{
+    margin:20px 0;
+}
+#decodeSection{
+    color: rgb(26, 152, 161);
+}
+#decodeSection h2{
+    margin-bottom: 20px;
+}
 .buttons {
     margin-bottom: 20px;
+    
 }
 
 button {
     margin-right: 10px;
     padding: 10px 15px;
+    background: white;
+    border-radius: 5px;
+    font-weight: 500;
+    box-shadow: 0px 3px 0px  gray;
+    border: 1px solid black;
+}
+button:active{
+    margin-top: 3px;
+    box-shadow: none;
+}
+button:hover{
+    background-color:rgb(26, 152, 161);
+    color: white;
 }
 
 .section {

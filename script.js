@@ -12,7 +12,7 @@ document.getElementById('encodeBtn').addEventListener('click', function () {
     } else {
         encodeSection.style.display = 'block';
         decodeSection.style.display = 'none';
-        container.style.top = "20vh";
+        container.style.top = "18vh";
     }
 });
 
