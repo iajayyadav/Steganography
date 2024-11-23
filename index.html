@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Steganography Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <h1>Image Steganography Tool</h1>
+    </nav>
+    <div class="container">
+        <h1>Select option</h1>
+        <div class="buttons">
+            <button id="encodeBtn">Encode Text</button>
+            <button id="decodeBtn">Decode Text</button>
+        </div>
+
+        <div id="encodeSection" class="section">
+            <h2>Encode Text into Image</h2>
+            <input type="file" id="imageInput" accept="image/*">
+            <textarea id="textInput" placeholder="Enter text to hide..."></textarea>
+            <button id="encodeImageBtn">Encode Image</button>
+            <canvas id="canvas" style="display:none;"></canvas>
+        </div>
+
+        <div id="decodeSection" class="section" style="display:none;">
+            <h2>Decode Text from Image</h2>
+            <input type="file" id="decodeImageInput" accept="image/*">
+            <button id="decodeImageBtn">Decode Image</button>
+            <p id="decodedText"></p>
+        </div>
+    </div>
+    <footer>
+       
+        
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
