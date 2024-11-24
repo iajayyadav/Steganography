@@ -1,4 +1,3 @@
-
 const container = document.getElementsByClassName("container")[0];
 const encodeSection = document.getElementById('encodeSection');
 const decodeSection = document.getElementById('decodeSection');
@@ -22,9 +21,11 @@ document.getElementById('decodeBtn').addEventListener('click', function () {
 
     if (decodeSection.style.display === 'block') {
         decodeSection.style.display = 'none';
+        container.style.top = "40vh";
     } else {
         decodeSection.style.display = 'block';
         encodeSection.style.display = 'none';
+        container.style.top = "18vh";
     }
 });
 

@@ -22,13 +22,13 @@ nav {
     position: fixed;
     top: 0;
     text-align: center;
-    font-size: 25px;
+    font-size: 110%;
     color: white;
     font-family:Arial, Helvetica, sans-serif;
     text-shadow: 5px 4px 10px rgba(0,0,0,0.52);
     height: 16vh;
     width: 100%;
-    /* background: rgb(26, 152, 161); */
+    background: rgb(26, 152, 161);
     z-index: 5;
 }
 nav h1{
@@ -44,7 +44,7 @@ nav h1{
     top: 40vh;
     margin: auto;
     height: auto;
-    max-width: 600px;
+    max-width: 70vw;
     background: white;
     padding: 20px;
     border-radius: 8px;
@@ -73,8 +73,12 @@ nav h1{
 #encodeSection h2{
     margin-bottom: 20px;
 }
-#encodeSection #imageInput{
+#encodeSection #imageInput,#decodeSection #decodeImageInput{
     margin:20px 0;
+    border: 1px solid gray;
+    padding: 9px;
+    border-radius: 5px;
+    width: 100%;
 }
 #decodeSection{
     color: black
@@ -101,7 +105,7 @@ button {
     border: 1px solid black;
     width: 175px;
     height: 65px;
-    /* margin: 20px auto; */
+    margin: 20px auto;
     -webkit-border-radius:10px;
     display: inline-flex;
     justify-content: center;
