@@ -33,7 +33,7 @@ nav {
     text-shadow: 5px 4px 10px rgba(0,0,0,0.52);
     height: 16vh;
     width: 100%;
-    background: rgb(26, 152, 161);
+    /* background: rgb(26, 152, 161); */
     z-index: 5;
 }
 nav h1{
@@ -67,9 +67,10 @@ nav h1{
     margin-bottom: 10px;
     font-size: 20px;
     padding: 20px;
-    width: 90%;
+    width: 85%;
     height: 18vh;
     color: black;
+    outline: none;
 }
 #encodeSection{
     display: none;
@@ -78,12 +79,14 @@ nav h1{
 #encodeSection h2{
     margin-bottom: 20px;
 }
-#encodeSection #imageInput,#decodeSection #decodeImageInput{
+#encodeSection #imageInput,#decodeSection #decodeImageInput, input[type="password"]{
     margin:20px 0;
     border: 1px solid gray;
     padding: 9px;
     border-radius: 5px;
-    width: 100%;
+    width: 90%;
+    outline:none;
+
 }
 #decodeSection{
     color: black
@@ -99,16 +102,11 @@ nav h1{
     margin-bottom: 20px;
     
 }
-
-input[type="password"] {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 16px;
+#encodeSection label, #decodeSection label{
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
 }
-
 
 button {
     margin-right: 40px;
@@ -136,16 +134,22 @@ button:hover{
     color: black;
 }
 
+#visualizationCanvas{
+    height: 500px;
+    width: auto;
+}
+
 .section {
     margin-top: 20px;
 }
 footer {
     text-align: center;
     padding: 10px;
+    box-sizing: border-box;
     background-color: #333;
     color: #fff;
-    position: fixed;
+    position:absolute;
     width: 100%;
-    bottom: 0;
+    bottom: -400px;
 }
 

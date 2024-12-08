@@ -1,6 +1,7 @@
 const container = document.getElementsByClassName("container")[0];
 const encodeSection = document.getElementById('encodeSection');
 const decodeSection = document.getElementById('decodeSection');
+let modifiedPixels = []; // Store indices of modified pixels for visualization
 
 document.getElementById('encodeBtn').addEventListener('click', function () {
 
@@ -64,14 +65,17 @@ document.getElementById('encodeImageBtn').addEventListener('click', function () 
 
             // Encode text length in the first pixel's blue channel
             data[2] = textLength;
+            modifiedPixels.push(2);
 
             for (let i = 0; i < textLength; i++) {
                 data[i * 4 + 3] = encryptedText.charCodeAt(i); // Store text in alpha channel
+                modifiedPixels.push(i * 4 + 3 );
             }
 
             ctx.putImageData(imageData, 0, 0);
             const encodedImage = canvas.toDataURL('image/png');
             download(encodedImage, 'encoded_image.png');
+            document.getElementById('visualizeBtn').style.display = 'block';
         };
 
         img.src = event.target.result;
@@ -132,6 +136,34 @@ document.getElementById('decodeImageBtn').addEventListener('click', function () 
 
     reader.readAsDataURL(file);
 });
+
+document.getElementById('visualizeBtn').addEventListener('click', function () {
+    const canvas = document.getElementById('canvas');
+    const visualizationCanvas = document.getElementById('visualizationCanvas');
+    const ctx = visualizationCanvas.getContext('2d');
+
+    visualizationCanvas.width = canvas.width;
+    visualizationCanvas.height = canvas.height;
+    ctx.drawImage(canvas, 0, 0);
+
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+
+    // Highlight modified pixels
+    modifiedPixels.forEach(index => {
+        const pixelStart = Math.floor(index / 4) * 4;
+        data[pixelStart] = 255; // Red
+        data[pixelStart + 1] = 0; // Green
+        data[pixelStart + 2] = 0; // Blue
+        data[pixelStart + 3] = 255; // Full opacity
+    });
+
+    ctx.putImageData(imageData, 0, 0);
+    visualizationCanvas.style.display = 'block';
+    alert('Visualization Mode: Red pixels represent modified areas.');
+});
+
+
 
 // Download function
 function download(data, filename) {
