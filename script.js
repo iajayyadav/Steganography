@@ -32,9 +32,12 @@ document.getElementById('decodeBtn').addEventListener('click', function () {
 document.getElementById('encodeImageBtn').addEventListener('click', function () {
     const imageInput = document.getElementById('imageInput');
     const textInput = document.getElementById('textInput');
+    const passwordInput = document.getElementById('encodePassword');
 
-    if (imageInput.files.length === 0 || textInput.value === '') {
-        alert('Please select an image and enter text.');
+    const encryptionKey = passwordInput.value;
+
+    if (imageInput.files.length === 0 || textInput.value === '' || encryptionKey === '') {
+        alert('Please select an image, enter text, and provide a password.');
         return;
     }
 
@@ -53,14 +56,17 @@ document.getElementById('encodeImageBtn').addEventListener('click', function () 
             const imageData = ctx.getImageData(0, 0, img.width, img.height);
             const data = imageData.data;
 
-            const text = textInput.value;
-            const textLength = text.length;
+            // Encrypt the text
+            const plainText = textInput.value;
+            const encryptedText = CryptoJS.AES.encrypt(plainText, encryptionKey).toString();
+
+            const textLength = encryptedText.length;
 
             // Encode text length in the first pixel's blue channel
             data[2] = textLength;
 
             for (let i = 0; i < textLength; i++) {
-                data[i * 4 + 3] = text.charCodeAt(i); // Store text in alpha channel
+                data[i * 4 + 3] = encryptedText.charCodeAt(i); // Store text in alpha channel
             }
 
             ctx.putImageData(imageData, 0, 0);
@@ -76,9 +82,12 @@ document.getElementById('encodeImageBtn').addEventListener('click', function () 
 
 document.getElementById('decodeImageBtn').addEventListener('click', function () {
     const decodeImageInput = document.getElementById('decodeImageInput');
+    const passwordInput = document.getElementById('decodePassword');
 
-    if (decodeImageInput.files.length === 0) {
-        alert('Please select an image to decode.');
+    const decryptionKey = passwordInput.value;
+
+    if (decodeImageInput.files.length === 0 || decryptionKey === '') {
+        alert('Please select an image and provide the password.');
         return;
     }
 
@@ -98,13 +107,24 @@ document.getElementById('decodeImageBtn').addEventListener('click', function () 
             const data = imageData.data;
 
             const textLength = data[2];
-            let decodedText = '';
+            let encodedText = '';
 
             for (let i = 0; i < textLength; i++) {
-                decodedText += String.fromCharCode(data[i * 4 + 3]); // Read text from alpha channel
+                encodedText += String.fromCharCode(data[i * 4 + 3]); // Read text from alpha channel
             }
 
-            document.getElementById('decodedText').innerText = decodedText;
+            // Decrypt the text
+            let decryptedText;
+            try {
+                const bytes = CryptoJS.AES.decrypt(encodedText, decryptionKey);
+                decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+                if (!decryptedText) throw new Error("Decryption failed.");
+            } catch (error) {
+                alert("Decryption failed. Check your password.");
+                return;
+            }
+
+            document.getElementById('decodedText').innerText = decryptedText;
         };
 
         img.src = event.target.result;

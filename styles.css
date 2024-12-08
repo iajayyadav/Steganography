@@ -100,6 +100,16 @@ nav h1{
     
 }
 
+input[type="password"] {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+}
+
+
 button {
     margin-right: 40px;
     padding: 10px 15px;
@@ -118,7 +128,7 @@ button {
     line-height: 40px;
 }
 button:active{
-    margin-top: 3px;
+    margin-top: 23px;
     box-shadow: none;
 }
 button:hover{

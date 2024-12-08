@@ -24,6 +24,7 @@
             <h2>Encode Text into Image</h2>
             <input type="file" id="imageInput" accept="image/*">
             <textarea id="textInput" spellcheck="false" placeholder="Enter text to hide..."></textarea>
+            <input type="password" id="encodePassword" placeholder="Enter a password" />
             <button id="encodeImageBtn">Encode Image</button>
             <canvas id="canvas" style="display:none;"></canvas>
         </div>
@@ -31,6 +32,7 @@
         <div id="decodeSection" class="section" style="display:none;">
             <h2>Decode Text from Image</h2>
             <input type="file" id="decodeImageInput" accept="image/*">
+            <input type="password" id="decodePassword" placeholder="Enter the password" />
             <button id="decodeImageBtn">Decode Image</button>
             <p id="decodedText"></p>
         </div>
@@ -41,6 +43,7 @@
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="script.js"></script>
 </body>
 
